@@ -82,7 +82,6 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.RecyclerViewHo
 
         }
 
-
     }
 
     public void addAll(List<BookResponseModel.ItemsBean> list) {

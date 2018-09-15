@@ -28,16 +28,15 @@ public class Repository {
 
     public LiveData<BookResponseModel> getBooksDetails() {
 
-        final MutableLiveData<BookResponseModel> mData =
+        final MutableLiveData<BookResponseModel> mBookList =
                 new MutableLiveData<>();
 
         apiInterface.getBooksInfo("love").enqueue(new retrofit2.Callback<BookResponseModel>() {
             @Override
             public void onResponse(Call<BookResponseModel> call, Response<BookResponseModel> response) {
 
-                mData.setValue(response.body());
+                mBookList.setValue(response.body());
                 Log.e(TAG, "onResponse: " + response.body());
-
 
             }
 
@@ -48,7 +47,7 @@ public class Repository {
             }
         });
 
-        return mData;
+        return mBookList;
     }
 
 }

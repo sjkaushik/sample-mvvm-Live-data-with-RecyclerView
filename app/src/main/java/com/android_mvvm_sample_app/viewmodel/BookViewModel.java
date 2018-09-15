@@ -14,15 +14,18 @@ import com.android_mvvm_sample_app.repository.Repository;
 public class BookViewModel extends ViewModel {
 
     private LiveData<BookResponseModel> modelLiveData = null;
-    private Repository repository;
 
     public BookViewModel() {
 
-        repository = new Repository();
+        // reading book details from Repository class.
+        Repository repository = new Repository();
         modelLiveData = repository.getBooksDetails();
     }
 
-    public LiveData<BookResponseModel> getModelLiveData() {
+    /**
+     * Emits Book list to the UI for observe and update
+     */
+    public LiveData<BookResponseModel> getBookListLiveData() {
         return modelLiveData;
     }
 }

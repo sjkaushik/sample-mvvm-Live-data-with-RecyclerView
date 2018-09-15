@@ -41,13 +41,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void observeViewModel(BookViewModel bookViewModel) {
 
-        bookViewModel.getModelLiveData().observe(this, new Observer<BookResponseModel>() {
+        // updating list based on data change
+        bookViewModel.getBookListLiveData().observe(this, new Observer<BookResponseModel>() {
             @Override
             public void onChanged(@Nullable BookResponseModel bookResponseModel) {
 
                 if (bookResponseModel != null)
                     bookAdapter.addAll(bookResponseModel.getItems());
-                    //settingData(bookResponseModel);
 
                 Log.e(TAG, "onChanged: " + bookResponseModel.getItems().size());
             }
@@ -55,9 +55,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    private void settingData(BookResponseModel bookResponseModel) {
-        bookAdapter.addAll(bookResponseModel.getItems());
-    }
 
     @Override
     public void onClick(View view) {
